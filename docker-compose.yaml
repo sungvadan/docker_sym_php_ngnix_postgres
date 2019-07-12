@@ -24,9 +24,13 @@ services:
   php:
     build:
       context: ./docker/php
+      args:
+        - UID=${uid}
+        - GID=${gid}
     expose:
       - "9000"
     volumes:
       - ./:/var/www:cached
+      - ~/.ssh:/root/.ssh
     links:
       - db
