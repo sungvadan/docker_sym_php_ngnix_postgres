@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  nginx:
+    build:
+      context: ./docker/nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+      - ./:/var/www:ro
+    links:
+      - php
+
+  php:
+    build:
+      context: ./docker/php
+    expose:
+      - "9000"
+    volumes:
+      - ./:/var/www:cached
