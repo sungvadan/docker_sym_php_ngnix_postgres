@@ -13,6 +13,7 @@ RUN set -eux \
     make \
     icu-dev \
     libtool \
+    openssh \
     git
 
 # Install composer
